@@ -36,7 +36,7 @@
     connectHttpApi();
 
     // connect both Coinfra WebSocket API and HTTP API
-    const subscribeWebsocketApi = async function () {
+    const connectWebSocketApi = async function () {
       const connection = new solanaWeb3.Connection(
         "https://solana-devnet.coinfra.io/v1/<your-api-key>",
         {
@@ -54,6 +54,6 @@
       console.log("subscription id");
       console.log(subscriptionId);
     };
-    subscribeWebsocketApi();
+    connectWebSocketApi();
   </script>
 </html>
