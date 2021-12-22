@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <title>Get Started Coinfra</title>
+  </head>
+
+  <body>
+    <h1>Get Started Coinfra</h1>
+    You can see values returned by Solana Web3 JavaScript API in Chrome
+    DevTools. <br />
+    If you don't know how to use Chrome DevTools, please refer to
+    <a href="https://developer.chrome.com/docs/devtools/open/" target="_blank"
+      >here</a
+    >.
+  </body>
+
+  <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
+  <script>
+    // connect Coinfra HTTP API
+    const connectHttpApi = async function () {
+      const connection = new solanaWeb3.Connection(
+        "https://solana-devnet.coinfra.io/v1/<your-api-key>",
+        "confirmed"
+      );
+      if (connection) {
+        console.log("connected to Coinfra HTTP API successfully");
+      }
+      const block = await connection.getBalance(
+        new solanaWeb3.PublicKey("<your-public-key>")
+      );
+      console.log("block");
+      console.log(block);
+    };
+    connectHttpApi();
+
+    // connect both Coinfra WebSocket API and HTTP API
+    const subscribeWebsocketApi = async function () {
+      const connection = new solanaWeb3.Connection(
+        "https://solana-devnet.coinfra.io/v1/<your-api-key>",
+        {
+          commitment: "confirmed",
+          wsEndpoint: "wss://solana-devnet.coinfra.io/v1/<your-api-key>",
+        }
+      );
+      if (connection) {
+        console.log("connected to Coinfra Websocket API successfully");
+      }
+      subscriptionId = connection.onSlotChange((slotInfo) => {
+        console.log("slot info");
+        console.log(slotInfo);
+      });
+      console.log("subscription id");
+      console.log(subscriptionId);
+    };
+    subscribeWebsocketApi();
+  </script>
+</html>
