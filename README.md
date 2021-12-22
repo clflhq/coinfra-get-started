@@ -6,9 +6,9 @@ This is the example of using Coinfra API built on the Solana [Solana Web3 JavaSc
 
 ## Prerequisite
 
-### Sign up Coinfra
+### Get Coinfra API key
 
-Sign up [Coinfra](https://www.coinfra.io) in order to get your api key
+Sign up [Coinfra](https://www.coinfra.io) and create a new project in order to get API key
 
 ### Install Solana Web3 JavaScript API
 
