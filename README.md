@@ -1,6 +1,7 @@
 # Get Started Coinfra
 
 This is the example of using Coinfra API built on the Solana [Solana Web3 JavaScript API](https://docs.solana.com/developing/clients/javascript-api)
+
 [Latest API Documentation](https://solana-labs.github.io/solana-web3.js/)
 
 ## Prerequisite
@@ -15,7 +16,7 @@ Refer to [here](https://github.com/solana-labs/solana-web3.js/blob/master/README
 
 If you use the browser bundle, you don't have to install it.
 
-### Run test validator
+### Run Solana test validator
 
 Install the latest Solana release from https://docs.solana.com/cli/install-solana-cli-tools
 
@@ -25,49 +26,53 @@ Use `solana-test-validator` command in order to run your test validator
 
 ### Use HTTP API
 
-```
+```js
 const connectHttpApi = async function () {
-    const connection = new solanaWeb3.Connection(
+  const connection = new solanaWeb3.Connection(
     "https://solana-devnet.coinfra.io/v1/<your-api-key>",
     "confirmed"
-    );
-    if (connection) {
+  );
+  if (connection) {
     console.log("connected to Coinfra HTTP API successfully");
-    }
-    const block = await connection.getBalance(
+  }
+  const block = await connection.getBalance(
     new solanaWeb3.PublicKey("<your-public-key>")
-    );
-    console.log("block");
-    console.log(block);
+  );
+  console.log("block");
+  console.log(block);
 };
 connectHttpApi();
 ```
 
-### Use HTTP API
+### Use WebSocket API
 
-```
-const connectHttpApi = async function () {
-    const connection = new solanaWeb3.Connection(
+```js
+const connectWebSocketApi = async function () {
+  const connection = new solanaWeb3.Connection(
     "https://solana-devnet.coinfra.io/v1/<your-api-key>",
-    "confirmed"
-    );
-    if (connection) {
-    console.log("connected to Coinfra HTTP API successfully");
+    {
+      commitment: "confirmed",
+      wsEndpoint: "wss://solana-devnet.coinfra.io/v1/<your-api-key>",
     }
-    const block = await connection.getBalance(
-    new solanaWeb3.PublicKey("<your-public-key>")
-    );
-    console.log("block");
-    console.log(block);
+  );
+  if (connection) {
+    console.log("connected to Coinfra Websocket API successfully");
+  }
+  subscriptionId = connection.onSlotChange((slotInfo) => {
+    console.log("slot info");
+    console.log(slotInfo);
+  });
+  console.log("subscription id");
+  console.log(subscriptionId);
 };
-connectHttpApi();
+connectWebSocketApi();
 ```
 
 Refer to index.html of this repository for more detail
 
 If you use Mac, the DocumentRoot of pre-installed Apache is /Library/WebServer/Documents
 
-So you can access http://localhost after you save this index.html into /Library/WebServer/Documents
+So you can access http://localhost after you save the index.html into /Library/WebServer/Documents
 
 ## Disclaimer
 
