@@ -71,7 +71,7 @@ try {
 }
 ```
 
-### Troubleshooting
+#### Troubleshooting
 If you can't connect with the WebSocket server, you may find the error messages from Coinfra on [WebSocket binary message viewer](https://developer.chrome.com/blog/new-in-devtools-74/#binary) of Google Chrome Developer Tools.
 
 Refer to index.html of this repository for more detail
