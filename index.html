@@ -14,9 +14,19 @@
     <a href="https://developer.chrome.com/docs/devtools/open/" target="_blank"
       >here</a
     >.
+
+    <br />
+    WebSocket
+    <br />
+    <button id="connectButton">Connect</button>
+
+    <button id="subscribeButton" disabled>Subscribe</button>
+    <button id="unSubscribeButton" disabled>Unsubscribe</button>
+    subscription id:<span id="subscriptionId"></span>
   </body>
 
   <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
+
   <script>
     // connect Coinfra HTTP API
     const connectHttpApi = async function () {
@@ -32,22 +42,57 @@
     };
     connectHttpApi();
 
+    document.querySelector("#connectButton").addEventListener("click", connect);
+    document
+      .querySelector("#subscribeButton")
+      .addEventListener("click", subscribe);
+    document
+      .querySelector("#unSubscribeButton")
+      .addEventListener("click", unsubscribe);
+
+    let connection;
+
     // connect both Coinfra WebSocket API and HTTP API
-    const connectWebSocketApi = async function () {
-      const connection = new solanaWeb3.Connection(
-        "https://solana-devnet.coinfra.io/v1/<your-api-key>",
-        {
-          commitment: "confirmed",
-          wsEndpoint: "wss://solana-devnet.coinfra.io/v1/<your-api-key>",
-        }
-      );
+    async function connect() {
+      document.querySelector("#connectButton").disabled = true;
+      console.log("connect");
+      console.log(connection);
+      if (connection === undefined) {
+        connection = new solanaWeb3.Connection(
+          "https://solana-devnet.coinfra.io/v1/<your-api-key>",
+          {
+            commitment: "confirmed",
+            wsEndpoint: "wss://solana-devnet.coinfra.io/v1/<your-api-key>",
+          }
+        );
+      }
+      document.querySelector("#subscribeButton").disabled = false;
+      document.querySelector("#unSubscribeButton").disabled = true;
+    }
+
+    async function subscribe() {
+      document.querySelector("#subscribeButton").disabled = true;
       subscriptionId = connection.onSlotChange((slotInfo) => {
-        console.log("slot info");
+        console.log("subscribe slot info");
         console.log(slotInfo);
+        document.querySelector("#connectButton").disabled = true;
+        document.querySelector("#unSubscribeButton").disabled = false;
       });
-      console.log("subscription id");
-      console.log(subscriptionId);
-    };
-    connectWebSocketApi();
+      document.querySelector("#subscriptionId").innerText = subscriptionId;
+    }
+
+    async function unsubscribe() {
+      document.querySelector("#unSubscribeButton").disabled = true;
+      try {
+        await connection.removeSlotChangeListener(
+          parseInt(document.querySelector("#subscriptionId").innerText)
+        );
+      } catch (error) {
+        console.log(error);
+      }
+      console.log("unsubscribe");
+      document.querySelector("#connectButton").disabled = false;
+      document.querySelector("#subscribeButton").disabled = true;
+    }
   </script>
 </html>
