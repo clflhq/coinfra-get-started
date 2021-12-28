@@ -32,9 +32,6 @@ const connectHttpApi = async function () {
     "https://solana-devnet.coinfra.io/v1/<your-api-key>",
     "confirmed"
   );
-  if (connection) {
-    console.log("connected to Coinfra HTTP API successfully");
-  }
   const block = await connection.getBalance(
     new solanaWeb3.PublicKey("<your-public-key>")
   );
@@ -55,9 +52,6 @@ const connectWebSocketApi = async function () {
       wsEndpoint: "wss://solana-devnet.coinfra.io/v1/<your-api-key>",
     }
   );
-  if (connection) {
-    console.log("connected to Coinfra Websocket API successfully");
-  }
   subscriptionId = connection.onSlotChange((slotInfo) => {
     console.log("slot info");
     console.log(slotInfo);
