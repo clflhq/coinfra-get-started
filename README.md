@@ -20,7 +20,7 @@ If you use the browser bundle, you don't have to install it
 
 Install the latest Solana release from https://docs.solana.com/cli/install-solana-cli-tools
 
-Use `solana-test-validator` command in order to run your test validator on your local machine
+Use `solana-test-validator` command in order to run your Solana test validator on your local machine
 
 ## Usage
 
@@ -66,7 +66,7 @@ subscriptionId = connection.onSlotChange((slotInfo) => {
 ```js
 try {
   await connection.removeSlotChangeListener(
-    parseInt(document.querySelector("#subscriptionId").innerText)
+    parseInt(<your-subscription-id>)
   );
 } catch (error) {
   console.log(error);
