@@ -71,6 +71,10 @@ try {
 }
 ```
 
+### Troubleshooting
+If you can't connect with the WebSocket server, you may find the error messages from Coinfra on Google Chrome Developer Tools.
+https://developer.chrome.com/blog/new-in-devtools-74/#binary
+
 Refer to index.html of this repository for more detail
 
 If you use Mac, the DocumentRoot of pre-installed Apache is /Library/WebServer/Documents
@@ -83,9 +87,9 @@ So you can access http://localhost after you save the index.html into /Library/W
 
 The information provided by Sharemall ("we," "us", or "our") on https://github.com/cifihg/coinfra get-started (the "Site") is for general informational purposes only.
 
-All information on the Site is provided in good faith, however we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability or completeness ofany information on the Site.
+All information on the Site is provided in good faith, however, we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information on the Site.
 
-UNDER NO CIRCUMSTANCE SHALL WE HAVE ANY LIABILITY TO YOU FOR ANY LOSS OR DAMAGE OF ANY KIND INCURRED AS ARESULT OF THE USE OF THE SITE OR RELIANCE ON ANY INFORMATION PROVIDED ON THE SITE.
+UNDER NO CIRCUMSTANCE SHALL WE HAVE ANY LIABILITY TO YOU FOR ANY LOSS OR DAMAGE OF ANY KIND INCURRED AS A RESULT OF THE USE OF THE SITE OR RELIANCE ON ANY INFORMATION PROVIDED ON THE SITE.
 
 YOUR USE OF THE SITE AND YOUR RELIANCE ON ANY INFORMATION ON THE SITE IS SOLELY AT YOUR OWN RISK.
 
@@ -93,7 +97,7 @@ YOUR USE OF THE SITE AND YOUR RELIANCE ON ANY INFORMATION ON THE SITE IS SOLELY 
 
 The Site may contain (or you may be sent through the Site) links to other websites or content belonging to or originating from third parties or links to websites and features in banners or other advertising.
 
-Such external links are not investigated, monitored, or checked for accuracy, adequacy, validity, reliability, availability or completeness by us.
+Such external links are not investigated, monitored, or checked for accuracy, adequacy, validity, reliability, availability, or completeness by us.
 
 WE DO NOT WARRANT, ENDORSE, GUARANTEE, OR ASSUME RESPONSIBILITY FOR THE ACCURACY OR RELIABILITY OF ANY INFORMATION OFFERED BY THIRD-PARTY WEBSITES LINKED THROUGH THE SITE OR ANY WEBSITE OR FEATURE LINKED IN ANY BANNER OR OTHER ADVERTISING.
 
@@ -107,6 +111,6 @@ The blockchain information is provided for general informational and educational
 
 Accordingly, before taking any actions based upon such information, we encourage you to consult with the appropriate professionals.
 
-We do not provide any kind of blockchain advice. T
+We do not provide any kind of blockchain advice. 
 
-HE USE OR RELIANCE OF ANY INFORMATION CONTAINED ON THE SITE IS SOLELY AT YOUR OWN RISK.
+THE USE OR RELIANCE OF ANY INFORMATION CONTAINED ON THE SITE IS SOLELY AT YOUR OWN RISK.
