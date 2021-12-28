@@ -14,13 +14,13 @@ Sign up [Coinfra](https://www.coinfra.io) and create a new project in order to g
 
 Refer to [here](https://github.com/solana-labs/solana-web3.js/blob/master/README.md#installation) for more detail
 
-If you use the browser bundle, you don't have to install it.
+If you use the browser bundle, you don't have to install it
 
 ### Run Solana test validator
 
 Install the latest Solana release from https://docs.solana.com/cli/install-solana-cli-tools
 
-Use `solana-test-validator` command in order to run your test validator
+Use `solana-test-validator` command in order to run your test validator on your local machine
 
 ## Usage
 
@@ -43,23 +43,34 @@ connectHttpApi();
 
 ### Use WebSocket API
 
+#### Connect
 ```js
-const connectWebSocketApi = async function () {
-  const connection = new solanaWeb3.Connection(
-    "https://solana-devnet.coinfra.io/v1/<your-api-key>",
-    {
-      commitment: "confirmed",
-      wsEndpoint: "wss://solana-devnet.coinfra.io/v1/<your-api-key>",
-    }
+connection = new solanaWeb3.Connection(
+  "https://solana-devnet.coinfra.io/v1/<your-api-key>",
+  {
+    commitment: "confirmed",
+    wsEndpoint: "wss://solana-devnet.coinfra.io/v1/<your-api-key>",
+  }
+);
+```
+
+#### Subscribe
+```js
+subscriptionId = connection.onSlotChange((slotInfo) => {
+  console.log("subscribe slot info");
+  console.log(slotInfo);
+});
+```
+
+#### Unsubscribe
+```js
+try {
+  await connection.removeSlotChangeListener(
+    parseInt(document.querySelector("#subscriptionId").innerText)
   );
-  subscriptionId = connection.onSlotChange((slotInfo) => {
-    console.log("slot info");
-    console.log(slotInfo);
-  });
-  console.log("subscription id");
-  console.log(subscriptionId);
-};
-connectWebSocketApi();
+} catch (error) {
+  console.log(error);
+}
 ```
 
 Refer to index.html of this repository for more detail
