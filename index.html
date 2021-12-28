@@ -21,7 +21,7 @@
     <button id="connectButton">Connect</button>
 
     <button id="subscribeButton" disabled>Subscribe</button>
-    <button id="unSubscribeButton" disabled>Unsubscribe</button>
+    <button id="unsubscribeButton" disabled>Unsubscribe</button>
     subscription id:<span id="subscriptionId"></span>
   </body>
 
@@ -47,7 +47,7 @@
       .querySelector("#subscribeButton")
       .addEventListener("click", subscribe);
     document
-      .querySelector("#unSubscribeButton")
+      .querySelector("#unsubscribeButton")
       .addEventListener("click", unsubscribe);
 
     let connection;
@@ -67,7 +67,7 @@
         );
       }
       document.querySelector("#subscribeButton").disabled = false;
-      document.querySelector("#unSubscribeButton").disabled = true;
+      document.querySelector("#unsubscribeButton").disabled = true;
     }
 
     async function subscribe() {
@@ -76,13 +76,13 @@
         console.log("subscribe slot info");
         console.log(slotInfo);
         document.querySelector("#connectButton").disabled = true;
-        document.querySelector("#unSubscribeButton").disabled = false;
+        document.querySelector("#unsubscribeButton").disabled = false;
       });
       document.querySelector("#subscriptionId").innerText = subscriptionId;
     }
 
     async function unsubscribe() {
-      document.querySelector("#unSubscribeButton").disabled = true;
+      document.querySelector("#unsubscribeButton").disabled = true;
       try {
         await connection.removeSlotChangeListener(
           parseInt(document.querySelector("#subscriptionId").innerText)
