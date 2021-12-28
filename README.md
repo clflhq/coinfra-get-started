@@ -65,9 +65,7 @@ subscriptionId = connection.onSlotChange((slotInfo) => {
 #### Unsubscribe
 ```js
 try {
-  await connection.removeSlotChangeListener(
-    parseInt(<your-subscription-id>)
-  );
+  await connection.removeSlotChangeListener(<your-subscription-id>);
 } catch (error) {
   console.log(error);
 }
